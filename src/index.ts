@@ -82,7 +82,8 @@ export default class MulterGoogleCloudStorage implements multer.StorageEngine {
 					.on('error', (err) => cb(err))
 					.on('finish', (file) => cb(null, {
 							path: `https://${this.options.bucket}.storage.googleapis.com/${filename}`,
-							filename: filename
+							filename: filename,
+              size: gcFile.metadata.size,
 						})
 					);
 			});
